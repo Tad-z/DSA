@@ -81,9 +81,36 @@ class HashTable {
 function firstReccuringCharacter(input) {
     for (let i = 0; i < input.length; i++) {
         for (let j = i + 1; i < input.length; j++) {
-        }
+            if (input[i] === input[j]) {
+                return input[i];   
+            }
+        }   
     }
-
+    return undefined;
 }
 
-firstReccuringCharacter([2,5,1,2,3,5,1,2,4])
+// optimised way
+function firstReccuringCharacter2(input) {
+    // Step 1: Initialize an empty object named 'map'.
+    let map = {}
+
+     // Step 2: Iterate through each element of the 'input' array.
+    for (let i = 0; i < input.length; i++) {
+        // Step 3: Check if the current element exists as a key in the 'map' object.
+        if(map[input[i]] !== undefined) {
+             // Step 4: If the element already exists in the 'map', return it as the first recurring character.
+            return input[i]
+        } else {
+            // Step 5: If the element doesn't exist in the 'map', add it as a key with its index as the value.
+            map[input[i]] = i
+        }
+        // Step 6: Print the current state of the 'map' object during each iteration.
+        console.log(map);
+    }
+    // Step 7: If no recurring character is found, return 'undefined'.
+    return undefined
+}
+
+firstReccuringCharacter2([2,3,4,2,5]);
+
+

@@ -114,4 +114,26 @@ function twoSums(array, target) {
     console.log(output);
 }
 
-twoSums([2,7,11,15], 13);
+// twoSums([2,7,11,15], 13);
+
+// optimised for speed
+function twoSums(nums, target) {
+    // Create a map to store the elements and their indices
+    const output = new Map()
+    for (let i = 0; i < nums.length; i++) {
+        // Calculate the complement (the number needed to reach the target)
+        let complement = target - nums[i];
+        
+         // Check if the complement is already in the map
+        if(output.has(complement)) {
+             // If found, return the indices of the two numbers
+            return [output.get(complement), i]
+        }
+         // If the complement is not in the map, add the current number and its index
+        output.set(input[i], i)
+    
+    }
+    return []
+}
+
+twoSums([2,7,11,15], 9)
