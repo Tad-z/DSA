@@ -130,9 +130,10 @@ function twoSums(nums, target) {
             return [output.get(complement), i]
         }
          // If the complement is not in the map, add the current number and its index
-        output.set(input[i], i)
+        output.set(nums[i], i)
     
     }
+    console.log(output)
     return []
 }
 

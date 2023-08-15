@@ -80,7 +80,7 @@ class HashTable {
 // First Reccurung character 
 function firstReccuringCharacter(input) {
     for (let i = 0; i < input.length; i++) {
-        for (let j = i + 1; i < input.length; j++) {
+        for (let j = i + 1; j < input.length; j++) {
             if (input[i] === input[j]) {
                 return input[i];   
             }
@@ -88,6 +88,7 @@ function firstReccuringCharacter(input) {
     }
     return undefined;
 }
+firstReccuringCharacter([2,3,4,2,5])
 
 // optimised way
 function firstReccuringCharacter2(input) {
@@ -111,6 +112,25 @@ function firstReccuringCharacter2(input) {
     return undefined
 }
 
-firstReccuringCharacter2([2,3,4,2,5]);
+// firstReccuringCharacter2([2,3,4,2,5]);
+
+function containsCommonItem (arr1, arr2) {
+    let map = {}
+    for( let i=0; i<arr1.length; i++) {
+        if (!map[arr1[i]]) {
+            const item = arr1[i]
+            map[item] = true
+        }
+    }
+
+    for( let j=0; j<arr2.length; j++) {
+        if (map[arr2[j]]) {
+            return true
+        }
+    }
+    return false
+}
+
+containsCommonItem([1,4,5,3,2], [2,3,4,5,6])
 
 
