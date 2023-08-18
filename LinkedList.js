@@ -100,12 +100,15 @@ class LinkedList {
         // this.head = first
         // console.log(first);
         // return this
-        
+
         // Simple way
+        if (!this.head.next) {
+            return this.head;
+        }
         let current = this.head;
         this.tail = this.head;
         let prev = null;
-        while(current) {
+        while (current) {
             let next = current.next;
             current.next = prev;
             prev = current;

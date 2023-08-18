@@ -11,9 +11,11 @@ class HashTable {
         }
         return hash;
     }
+    // implement this function with a linked
+    // list not array later
     set(key, value) {
         let adress = this._hash(key);
-        console.log(adress);
+        console.log(this.data[adress]);
         if (!this.data[adress]) {
             this.data[adress] = [];
         }
@@ -68,9 +70,9 @@ class HashTable {
     }
 }
 
-// const myHashTable = new HashTable(40 )
-// myHashTable.set('grapes', 10000);
-// myHashTable.set('apples', 100);
+const myHashTable = new HashTable(40 )
+myHashTable.set('grapes', 10000);
+myHashTable.set('apples', 100);
 // myHashTable.set('meat', 50);
 // myHashTable.set('banana', 100);
 // myHashTable.set('berry', 1000);
