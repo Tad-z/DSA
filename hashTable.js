@@ -73,11 +73,11 @@ class HashTable {
 const myHashTable = new HashTable(40 )
 myHashTable.set('grapes', 10000);
 myHashTable.set('apples', 100);
-// myHashTable.set('meat', 50);
-// myHashTable.set('banana', 100);
-// myHashTable.set('berry', 1000);
-// myHashTable.get('apples')
-// myHashTable.keys2()
+myHashTable.set('meat', 50);
+myHashTable.set('banana', 100);
+myHashTable.set('berry', 1000);
+myHashTable.get('apples')
+myHashTable.keys2()
 
 // First Reccurung character 
 function firstReccuringCharacter(input) {
