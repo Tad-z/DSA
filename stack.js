@@ -30,9 +30,9 @@ class Stack {
         return this;
     }
     pop() {
-        // if (!this.top) {
-        //     return null;
-        // }
+        if (!this.top) {
+            return null;
+        }
         if (this.length === 1) {
             this.bottom = null;
             this.top = null;
