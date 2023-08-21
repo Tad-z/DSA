@@ -78,3 +78,88 @@ const myStack2 = new Stack2();
 myStack2.push('google')
 myStack2.push('udemy')
 myStack2.push('discord')
+
+// implement stack using queue
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class Queue {
+    constructor() {
+        this.first = null;
+        this.last = null;
+        this.length = 0;
+    }
+    peek() {
+        return this.first.value;
+    }
+    enqueue(value) {
+        const newNode = new Node(value)
+        if (this.length === 0) {
+            this.first = newNode;
+            this.last = newNode;
+        } else {
+            const lastNode = this.last;
+            lastNode.next = newNode
+            this.last = newNode;
+        }
+        this.length++
+    }
+    dequeue() {
+        if (!this.first) {
+            return null
+        }
+        if (this.length === 1) {
+            this.last = null;
+            this.first = null;
+            this.length--
+            return this.first.value
+        } else {
+            const firstNode = this.first;
+            const nextNode = firstNode.next;
+            firstNode.next = null
+            this.first = nextNode
+            this.length--
+            return firstNode.value;
+        }
+
+    }
+    empty() {
+        return this.length === 0;
+    }
+}
+
+class Stack3 {
+    constructor() {
+        this.queue = new Queue();
+    }
+
+    push(value) {
+        let rotate = this.queue.length;
+        this.queue.enqueue(value);
+
+        while (rotate) {
+            this.queue.enqueue(this.queue.dequeue())
+            rotate--
+        }
+    }
+    pop() {
+        return this.queue.dequeue();
+    }
+
+    top() {
+        return this.queue.peek()
+    }
+
+    empty() {
+        this.queue.empty;
+    }
+}
+
+const myStack3 = new Stack3();
+myStack3.push('google')
+myStack3.push('udemy')
+myStack3.push('discord')

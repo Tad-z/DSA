@@ -39,6 +39,7 @@ class Queue {
         } else {
             const firstNode = this.first;
             const nextNode = firstNode.next;
+            firstNode.next = null
             this.first = nextNode
             this.length--
             return this;
