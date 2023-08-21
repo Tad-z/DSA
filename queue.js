@@ -28,7 +28,7 @@ class Queue {
         return this;
     }
     dequeue() {
-        if(!this.first) {
+        if (!this.first) {
             return null
         }
         if (this.length === 1) {
@@ -51,34 +51,47 @@ const myQueue = new Queue();
 myQueue.enqueue(10)
 
 // implement a queue using a stack
-class Stack {
+class Queue2 {
     constructor() {
-        this.array = []
+        this.pushStack = [];
+        this.popStack = []
     }
-    peek() {
-        return this.array[this.array.length-1]
-    }
+
     push(value) {
-        this.array.push(value)
-        return this;
+        // just push inside the push stack
+        while (this.popStack.length) {
+            this.pushStack.push(this.popStack.pop())
+        }
+        this.pushStack.push(value)
+        return this
     }
     pop() {
-        this.array.pop()
-        return this;
+        // if the pop stack is empty
+        if (!this.popStack.length) {
+            // while there are elements in the push stack
+            while (this.pushStack.length) {
+                // pour all the items in the push stack to the pop stack
+                this.popStack.push(this.pushStack.pop())
+            }
+        }
+        // pop the last item in the pop stack which is the first item in the queue
+        return this.popStack.pop()
     }
-}
-
-const myStack = new Stack();
-myStack.push('google')
-myStack.push('udemy')
-myStack.push('discord')
-
-class Queue2 {
-    constructor(value) {
-        this.stack = new Stack()
-    }
-
     peek() {
-        return this.stack
+        if (!this.popStack.length) {
+            // while there are elements in the push stack
+            while (this.pushStack.length) {
+                // pour all the items in the push stack to the pop stack
+                this.popStack.push(this.pushStack.pop())
+            }
+        }
+        // return the last item in the popstack which is the first item in the queue
+        return this.popStack[this.popStack.length - 1]
+    }
+    empty() {
+        return !this.popStack.length && !this.pushStack.length
     }
 }
+
+const myQueue2 = new Queue2
+myQueue2.push(10)
