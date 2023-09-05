@@ -19,14 +19,14 @@ class BinarySearchTree {
         let currentNode = this.root;
         while (true) {
             if (value < currentNode.value) {
-                console.log("left", currentNode);
+                
                 if (!currentNode.left) {
                     currentNode.left = newNode;
                     return this;
                 }
                 currentNode = currentNode.left
             } else {
-                console.log("right", currentNode);
+                
                 if(!currentNode.right) {
                     currentNode.right = newNode;
                     return this;
@@ -70,7 +70,7 @@ tree.insert(20);
 tree.insert(170);
 tree.insert(1);
 tree.insert(15);
-
+tree.lookup(170);
 JSON.stringify(traverse(tree.root))
 
 function traverse(node) {
