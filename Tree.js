@@ -59,7 +59,7 @@ class BinarySearchTree {
         }
         return false;
     }
-    remove(value)
+    remove() {}
 }
 
 const tree = new BinarySearchTree();
