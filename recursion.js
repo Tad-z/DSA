@@ -21,27 +21,20 @@ function inception() {
 // 0! = 1
 
 function findFactorialRecursive(number) {
-    if (number === 0) {
+    if(number < 2) {
         return 1
-    }
-    if (number === 1) {
-        return 1
-    }
+       }
     if (number > 1) {
        return number * findFactorialRecursive(number-1)
     }
 }
 
 function findFactorialIterative(number) {
-    if (number === 0) {
-        return 1
-    }
-    if (number === 1) {
-        return 1
-    }
+   if(number < 2) {
+    return 1
+   }
     let answer = number;
     for(let i = number-1; i > 1; i--) {
-        console.log({i, number});
         answer *= i;
     }
     return answer
@@ -61,4 +54,35 @@ function fibonacciIterative(n) {
     }
     return arr[n];
 }
+
+//Implement a function that reverses a string using iteration...and then recursion!
+function reverseIterativeString(str) {
+    if(!str.length) {
+        return 'do better'
+    }
+    if(str.length === 1) {
+        return str
+    }
+    let arr = []
+    for(let i = str.length; i >= 0; i--) {
+        console.log(str[i])
+        arr.push(str[i])
+        
+    }
+    return arr.join("")
+}
+
+reverseIterativeString('yoyo mastery')
+
+function reverseStringRecursive (str) {
+    if (str === "") {
+      return "";
+    } else {
+      console.log(str.substr(1) + str.charAt(0))
+      return reverseStringRecursive(str.substr(1)) + str.charAt(0);
+    }
+  }
+
+reverseIterativeString('yoyo mastery')
+//should return: 'yretsam oyoy'
 
