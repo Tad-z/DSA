@@ -71,37 +71,34 @@ console.log(numbers)
 
 function insertionSort(arr) {
     const length = arr.length;
-  
+
     for (let i = 1; i < length; i++) {
-      // Store the current element to be compared and inserted
-      let currentElement = arr[i];
-      console.log("curr", currentElement);
-      
-      // Start from the index, one position before the current element
-      let j = i - 1;
-  
-      // Iterate backwards through the sorted portion of the array
-      // and shift elements greater than the current element to the right
-      while (j >= 0 && arr[j] > currentElement) {
-        arr[j + 1] = arr[j];
-        console.log("j1", arr[j+1])
-        j--;
-        console.log(j);
-      }
-  
-      // Insert the current element into its correct position
-      arr[j + 1] = currentElement;
-      console.log("j1", arr[j+1]);
-      console.log("arr", arr);
+        let currentElement = arr[i];
+        console.log("curr", currentElement);
+
+        let j = i - 1;
+
+        // Iterate backwards through the sorted portion of the array
+        // and shift elements greater than the current element to the right
+        while (j >= 0 && arr[j] > currentElement) {
+            arr[j + 1] = arr[j];
+            console.log("j1", arr[j + 1])
+            j--;
+            console.log(j);
+        }
+
+        arr[j + 1] = currentElement;
+        console.log("j1", arr[j + 1]);
+        console.log("arr", arr);
     }
-  
+
 
     return arr;
-  }
-  
-  const unsortedArray = [5, 2, 9, 1, 5, 6];
-  
-  const sortedArray = insertionSort(unsortedArray);
-  
-  console.log(sortedArray);
-  
+}
+
+const unsortedArray = [5, 2, 9, 1, 5, 6];
+
+const sortedArray = insertionSort(unsortedArray);
+
+console.log(sortedArray);
+
