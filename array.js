@@ -97,7 +97,7 @@ function mergeSortedArrays(array1, array2) {
     return mergedArray
 }
 
-// mergeSortedArrays([0,5,10], [4,7,11, 17])
+mergeSortedArrays([0,5,10], [4,7,11, 17])
 
 function twoSums(array, target) {
     const output = []
