@@ -20,6 +20,7 @@ function bubbleSort(array) {
 bubbleSort(numbers)
 console.log(numbers)
 
+
 // selection sort
 function selectionSort(array) {
     let length = array.length;
@@ -29,6 +30,7 @@ function selectionSort(array) {
         for (let j = i + 1; j < length; j++) {
             if (array[j] < smallest) {
                 smallest = array[j]
+                console.log("smallest", smallest)
                 position = j
             }
         }
