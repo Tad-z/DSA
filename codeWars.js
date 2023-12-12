@@ -8,46 +8,48 @@
 // arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
 function arrayDiff(a, b) {
-    let list = [];
-  
-    for (let i = 0; i < a.length; i++) {
-      let found = false;
-  
-      for (let j = 0; j < b.length; j++) {
-        console.log(a[i], b[j])
-        if (a[i] === b[j]) {
-          found = true;
-          break;
-        }
-      }
-  
-      if (!found) {
-        list.push(a[i]);
+  let list = [];
+
+  for (let i = 0; i < a.length; i++) {
+    let found = false;
+
+    for (let j = 0; j < b.length; j++) {
+      console.log(a[i], b[j])
+      if (a[i] === b[j]) {
+        found = true;
+        break;
       }
     }
-  
-    console.log(list);
-    return list;
+
+    if (!found) {
+      list.push(a[i]);
+    }
   }
 
-  // Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+  console.log(list);
+  return list;
+}
 
-  // Examples:
-  // Input: 42145 Output: 54421
-  
-  // Input: 145263 Output: 654321
-  
-  // Input: 123456789 Output: 987654321
+// Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
 
-   // can also use sorting algorithms
+// Examples:
+// Input: 42145 Output: 54421
 
-  function descendingOrder(n){
-    return parseInt(String(n).split('').sort().reverse().join(''))
-  }
+// Input: 145263 Output: 654321
 
- 
+// Input: 123456789 Output: 987654321
 
-//   In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater than or equal to p = 1200 inhabitants?
+// can also use sorting algorithms
+
+function descendingOrder(n) {
+  return parseInt(String(n).split('').sort().reverse().join(''))
+}
+
+
+
+//   In a small town the population is p0 = 1000 at the beginning of a year. 
+// The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. 
+// How many years does the town need to see its population greater than or equal to p = 1200 inhabitants?
 
 // At the end of the first year there will be: 
 // 1000 + 1000 * 0.02 + 50 => 1070 inhabitants
@@ -74,17 +76,40 @@ function arrayDiff(a, b) {
 // Don't forget to convert the percent parameter as a percentage in the body of your function: if the parameter percent is 2 you have to convert it to 0.02.
 
 // There are no fractions of people. At the end of each year, the population count is an integer: 252.8 people round down to 252 persons.
-  
+
 function nbYear(p0, percent, aug, p) {
-  percent = percent/100;
+  percent = percent / 100;
   let n = 0;
-  let p1 = p0;
-  while(p1 < p) {
-    p1 = Math.floor(p1 + p1 * percent + aug)
+  while (p0 < p) {
+    p0 = Math.floor(p0 + p0 * percent + aug)
     n++
   }
-return n
+  return n
 }
-  
-  
-  
+
+// You are going to be given a word. 
+// Your job is to return the middle character of the word. 
+// If the word's length is odd, return the middle character. 
+// If the word's length is even, return the middle 2 characters.
+
+function getMiddle(s) {
+  const length = s.length;
+
+  function isEven(len) {
+    return len % 2 === 0;
+  }
+
+  const result = isEven(length);
+  const array = s.split("");
+
+  if (result) {
+    const halfLength = length / 2;
+    return `${array[halfLength - 1]}${array[halfLength]}`;
+  } else {
+    const halfLength = Math.ceil(length / 2);
+    return `${array[halfLength - 1]}`;
+  }
+}
+
+
+
