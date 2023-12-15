@@ -23,3 +23,19 @@ def spin_words(sentence):
 
     new_sentence = ' '.join(reverse_array)
     return new_sentence
+
+# Your task is to write a function that takes a string and return a new string with all vowels removed.
+
+def disemvowel(string_):
+    remove = ['a','e','i','o','u','A','E','I','O','U']
+    for element in string_:
+        if element in remove:
+            string_ = string_.replace(element, "")
+    return string_
+
+# or
+
+import re
+
+def disemvowel(string_):
+    return re.sub(r'[aeiouAEIOU]', '', string_)
