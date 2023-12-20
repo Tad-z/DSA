@@ -221,5 +221,45 @@ function removeDuplicates(nums) {
     return k
 };
 
+// Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+
+// Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
+
+// Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.
+// Return k.
+
+
+function removeElement(nums, val) {
+    let k = 0
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== val) {
+            nums[k] = nums[i]
+            k++
+        }
+    }
+    return k
+};
+
+// Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, 
+// or -1 if needle is not part of haystack.
+
+ 
+var strStr = function(haystack, needle) {
+    let i = 0;
+
+    for (let j = 0; j < haystack.length; j++) {
+        if (i < needle.length && needle[i] === haystack[j]) {
+            i++
+        if (i == needle.length) {
+            console.log(j)
+            return j + 1  - needle.length
+        }
+        } else {
+            i = 0
+        }
+    }
+    return -1
+};
+
 
 
