@@ -245,20 +245,39 @@ function removeElement(nums, val) {
 
  
 var strStr = function(haystack, needle) {
-    let i = 0;
+    if(needle.length > haystack.length) {
+        return -1;
+    } 
+    if(haystack === needle) return 0
 
-    for (let j = 0; j < haystack.length; j++) {
-        if (i < needle.length && needle[i] === haystack[j]) {
-            i++
-        if (i == needle.length) {
-            console.log(j)
-            return j + 1  - needle.length
-        }
-        } else {
-            i = 0
+    for (let i = 0; i <= haystack.length - needle.length; i++) {
+        if (haystack.substring(i, i + needle.length) === needle) {
+            return i
         }
     }
     return -1
+};
+
+// or
+
+var strStr = function(haystack, needle) {
+    if (needle.length > haystack.length) {
+        return -1;
+    }
+
+    if (haystack === needle) {
+        return 0;
+    }
+
+    for (let i = 0; i <= haystack.length - needle.length; i++) {
+        for (let j = 0; j < needle.length && haystack[i + j] === needle[j]; j++) {
+            if (j === needle.length - 1) {
+                return i;
+            }
+        }
+    }
+
+    return -1;
 };
 
 
