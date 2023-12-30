@@ -99,42 +99,4 @@ function mergeSortedArrays(array1, array2) {
 
 mergeSortedArrays([0,5,10], [4,7,11, 17])
 
-function twoSums(array, target) {
-    const output = []
-    for(let i = 0; i <= array.length-1; i++) {
-       for(let j = i + 1; j <= array.length-1; j++){
-        console.log(array[i] + array[j]);
-        if (array[i] + array[j] === target) {
-            output.push(i,j);
-            break 
-        }
-        
-       } 
-    }
-    console.log(output);
-}
 
-// twoSums([2,7,11,15], 13);
-
-// optimised for speed
-function twoSums(nums, target) {
-    // Create a map to store the elements and their indices
-    const output = new Map()
-    for (let i = 0; i < nums.length; i++) {
-        // Calculate the complement (the number needed to reach the target)
-        let complement = target - nums[i];
-        
-         // Check if the complement is already in the map
-        if(output.has(complement)) {
-             // If found, return the indices of the two numbers
-            return [output.get(complement), i]
-        }
-         // If the complement is not in the map, add the current number and its index
-        output.set(nums[i], i)
-    
-    }
-    console.log(output)
-    return []
-}
-
-twoSums([2,7,11,15], 9)

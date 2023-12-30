@@ -1,3 +1,43 @@
+function twoSums(array, target) {
+    const output = []
+    for(let i = 0; i <= array.length-1; i++) {
+       for(let j = i + 1; j <= array.length-1; j++){
+        console.log(array[i] + array[j]);
+        if (array[i] + array[j] === target) {
+            output.push(i,j);
+            break 
+        }
+        
+       } 
+    }
+    console.log(output);
+}
+
+// twoSums([2,7,11,15], 13);
+
+// optimised for speed
+function twoSums(nums, target) {
+    // Create a map to store the elements and their indices
+    const output = new Map()
+    for (let i = 0; i < nums.length; i++) {
+        // Calculate the complement (the number needed to reach the target)
+        let complement = target - nums[i];
+        
+         // Check if the complement is already in the map
+        if(output.has(complement)) {
+             // If found, return the indices of the two numbers
+            return [output.get(complement), i]
+        }
+         // If the complement is not in the map, add the current number and its index
+        output.set(nums[i], i)
+    
+    }
+    console.log(output)
+    return []
+}
+
+twoSums([2,7,11,15], 9)
+
 // return true for numbers like 121, 131 becuase they are the same backwards and forward
 //  false for numbers like 20, 30 e.t.c
 
@@ -116,12 +156,6 @@ function isValid(s) {
 }
 
 
-class ListNode {
-    constructor(val, next = null) {
-        this.val = val;
-        this.next = next;
-    }
-}
 
 // You are given the heads of two sorted linked lists list1 and list2.
 
@@ -190,11 +224,17 @@ function mergeTwoLists(list1, list2) {
 
 
 
-// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+// Given an integer array nums sorted in non-decreasing order, 
+
+// remove the duplicates in-place such that each unique element appears only once. 
+
+// The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
 
 // Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
 
-// Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+// Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. 
+
+// The remaining elements of nums are not important as well as the size of nums.
 // Return k.
 
 var removeDuplicates = function(nums) {
@@ -220,6 +260,7 @@ function removeDuplicates(nums) {
     }
     return k
 };
+
 
 // Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
 
@@ -258,6 +299,7 @@ var strStr = function(haystack, needle) {
     return -1
 };
 
+
 // or
 
 var strStr = function(haystack, needle) {
@@ -278,6 +320,51 @@ var strStr = function(haystack, needle) {
     }
 
     return -1;
+};
+
+// Given a sorted array of distinct integers and a target value, 
+
+// return the index if the target is found. 
+
+// If not, return the index where it would be if it were inserted in order.
+
+// You must write an algorithm with O(log n) runtime complexity.
+
+ 
+// o(n)
+var searchInsert = function(nums, target) {
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === target) {
+            return i
+        }
+        if (nums[i] > target) {
+            return i
+        }
+        if (target > nums[nums.length - 1]) {
+            return nums.length
+        }
+    }
+};
+
+// o(log n)
+
+var searchInsert = function(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+
+        if (nums[mid] === target) {
+            return mid;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return left; // Return the index where the target would be inserted
 };
 
 
