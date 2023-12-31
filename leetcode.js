@@ -367,5 +367,63 @@ var searchInsert = function(nums, target) {
     return left; // Return the index where the target would be inserted
 };
 
+// First calculate the reverse of number formed by traversing first linked list.
+// Now Repeat same with second list .
+// then store sum of these two numbers
+// then reverse the sum and store as lets say temp and at last build a linked list 
+// with node values as digits of the temp .
+
+function ListNode(val, next) {
+    this.val = (val===undefined ? 0 : val)
+    this.next = (next===undefined ? null : next)
+}
+
+function reverse(list) {
+    let current = list;
+    let prev = null;
+    let array = []
+
+    while (current) {
+        let next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+    }
+
+    reversedList = prev
+
+    while (reversedList) {
+        array.push(reversedList.val)
+        reversedList = reversedList.next
+    } 
+
+    let result = parseInt(array.join(''), 10);
+
+    return result;
+}
+
+var addTwoNumbers = function(l1, l2) {
+    const reversel1 = reverse(l1)
+    const reversel2 = reverse(l2)
+
+    const sum = reversel1 + reversel2
+
+
+     // Convert the number to a string to iterate through its digits
+    const numberString = sum.toString();
+    const length = numberString.length
+
+    let head = new ListNode(parseInt(numberString[length-1], 10));
+    let current = head;
+ 
+     // Iterate through the remaining digits and add them as nodes
+    for (let i = length-2; i >= 0; i--) {
+         current.next = new ListNode(parseInt(numberString[i], 10));
+         current = current.next;
+    }
+ 
+     return head;
+};
+
 
 
