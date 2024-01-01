@@ -367,63 +367,101 @@ var searchInsert = function(nums, target) {
     return left; // Return the index where the target would be inserted
 };
 
-// First calculate the reverse of number formed by traversing first linked list.
-// Now Repeat same with second list .
-// then store sum of these two numbers
-// then reverse the sum and store as lets say temp and at last build a linked list 
-// with node values as digits of the temp .
+// You are given two non-empty linked lists representing two non-negative integers. 
+
+// The digits are stored in reverse order, and each of their nodes contains a single digit. 
+
+// Add the two numbers and return the sum as a linked list.
+
+// You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+
 
 function ListNode(val, next) {
-    this.val = (val===undefined ? 0 : val)
-    this.next = (next===undefined ? null : next)
-}
-
-function reverse(list) {
-    let current = list;
-    let prev = null;
-    let array = []
-
-    while (current) {
-        let next = current.next;
-        current.next = prev;
-        prev = current;
-        current = next;
-    }
-
-    reversedList = prev
-
-    while (reversedList) {
-        array.push(reversedList.val)
-        reversedList = reversedList.next
-    } 
-
-    let result = parseInt(array.join(''), 10);
-
-    return result;
+    this.val = (val === undefined ? 0 : val);
+    this.next = (next === undefined ? null : next);
 }
 
 var addTwoNumbers = function(l1, l2) {
-    const reversel1 = reverse(l1)
-    const reversel2 = reverse(l2)
+    let dummy = new ListNode(0);
+    let current = dummy;
+    let carry = 0;
 
-    const sum = reversel1 + reversel2
+    while (l1 !== null || l2 !== null) {
+        const x = (l1 !== null) ? l1.val : 0;
+        const y = (l2 !== null) ? l2.val : 0;
 
+        const sum = x + y + carry;
+        carry = sum > 9 ? 1 : 0
 
-     // Convert the number to a string to iterate through its digits
-    const numberString = sum.toString();
-    const length = numberString.length
+        current.next = new ListNode(sum % 10);
+        current = current.next;
 
-    let head = new ListNode(parseInt(numberString[length-1], 10));
-    let current = head;
- 
-     // Iterate through the remaining digits and add them as nodes
-    for (let i = length-2; i >= 0; i--) {
-         current.next = new ListNode(parseInt(numberString[i], 10));
-         current = current.next;
+        if (l1 !== null) l1 = l1.next;
+        if (l2 !== null) l2 = l2.next;
     }
- 
-     return head;
+
+    if (carry > 0) {
+        current.next = new ListNode(carry);
+    }
+
+    return dummy.next;
 };
+
+
+
+// Given a string s, find the length of the longest 
+// substring
+//  without repeating characters.
+
+var lengthOfLongestSubstring = function (s) {
+    let start = 0;
+    let map = {};
+    let result = 0
+
+    for (let end = 0; end < s.length; end++) {
+        let currentChar = s[end];
+
+        // If the current character is already in the substring,
+        // increment the start pointer based on it's previous index 
+        if (map[currentChar] !== undefined && map[currentChar] >= start) {
+            start = map[currentChar] + 1
+        }
+
+        // Update the character's last index in the map
+        map[currentChar] = end
+
+        result = Math.max(result, end - start + 1)
+
+    }
+
+    return result
+
+}
+
+// or
+
+var lengthOfLongestSubstring = function(s) {
+    let set = new Set();
+    let left = 0;
+    let ans = 0;
+    for (let right = 0; right < s.length; right++) {
+       while (set.has(s[right])) {
+           set.delete(s[left])
+           left += 1;
+           console.log("left", left)
+       }
+        set.add(s[right]);
+        console.log("right",right)
+        ans = Math.max(ans, right - left + 1)
+    }
+    console.log(set)
+    return ans;
+};
+
+// Example usage:
+const s = "abcabcbb";
+console.log(lengthOfLongestSubstring(s));
 
 
 
