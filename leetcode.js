@@ -1,14 +1,14 @@
 function twoSums(array, target) {
     const output = []
-    for(let i = 0; i <= array.length-1; i++) {
-       for(let j = i + 1; j <= array.length-1; j++){
-        console.log(array[i] + array[j]);
-        if (array[i] + array[j] === target) {
-            output.push(i,j);
-            break 
+    for (let i = 0; i <= array.length - 1; i++) {
+        for (let j = i + 1; j <= array.length - 1; j++) {
+            console.log(array[i] + array[j]);
+            if (array[i] + array[j] === target) {
+                output.push(i, j);
+                break
+            }
+
         }
-        
-       } 
     }
     console.log(output);
 }
@@ -22,30 +22,30 @@ function twoSums(nums, target) {
     for (let i = 0; i < nums.length; i++) {
         // Calculate the complement (the number needed to reach the target)
         let complement = target - nums[i];
-        
-         // Check if the complement is already in the map
-        if(output.has(complement)) {
-             // If found, return the indices of the two numbers
+
+        // Check if the complement is already in the map
+        if (output.has(complement)) {
+            // If found, return the indices of the two numbers
             return [output.get(complement), i]
         }
-         // If the complement is not in the map, add the current number and its index
+        // If the complement is not in the map, add the current number and its index
         output.set(nums[i], i)
-    
+
     }
     console.log(output)
     return []
 }
 
-twoSums([2,7,11,15], 9)
+twoSums([2, 7, 11, 15], 9)
 
 // return true for numbers like 121, 131 becuase they are the same backwards and forward
 //  false for numbers like 20, 30 e.t.c
 
-function isPalindrome (x) {
+function isPalindrome(x) {
     let s = x.toString();
     let array = []
     let length = s.length - 1
-    for (let i = length; i>=0; i--) {
+    for (let i = length; i >= 0; i--) {
         array.push(s[i])
     }
     const reverse = parseInt(array.join(""))
@@ -67,7 +67,7 @@ function romanToInt(s) {
     let sum = 0
     for (let i = 0; i < s.length; i++) {
         let current = conversion[s[i]];
-        let next = conversion[s[i+1]]
+        let next = conversion[s[i + 1]]
 
         if (next && next > current) {
             sum += next - current
@@ -84,7 +84,7 @@ function romanToInt(s) {
 
 // If there is no common prefix, return an empty string "".
 
- 
+
 function longestCommonPrefix(strings) {
     if (!strings || strings.length === 0) {
         return "";
@@ -128,10 +128,10 @@ console.log(result);
 
 function isValid(s) {
     const stack = [];
-    const brackets = { 
-        '(': ')', 
-        '[': ']', 
-        '{': '}' 
+    const brackets = {
+        '(': ')',
+        '[': ']',
+        '{': '}'
     };
 
     for (let i = 0; i < s.length; i++) {
@@ -171,28 +171,28 @@ class ListNode {
 }
 
 function mergeTwoLists(list1, list2) {
-   const dummy = new ListNode(0)
-   let current = dummy
+    const dummy = new ListNode(0)
+    let current = dummy
 
-   console.log(list1)
-   while (list1 != null && list2 !== null) {
-       if(list1.val < list2.val) {
-           current.next = list1
-           list1 = list1.next
-       } else {
-           current.next = list2
-           list2 = list2.next
-       }
-       current = current.next
-   }
+    console.log(list1)
+    while (list1 != null && list2 !== null) {
+        if (list1.val < list2.val) {
+            current.next = list1
+            list1 = list1.next
+        } else {
+            current.next = list2
+            list2 = list2.next
+        }
+        current = current.next
+    }
 
-   if(list1 !== null) {
-       current.next = list1
-   } else {
-       current.next = list2
-   }
+    if (list1 !== null) {
+        current.next = list1
+    } else {
+        current.next = list2
+    }
 
-   return dummy.next
+    return dummy.next
 }
 
 // Helper function to create a linked list from an array
@@ -237,10 +237,10 @@ function mergeTwoLists(list1, list2) {
 // The remaining elements of nums are not important as well as the size of nums.
 // Return k.
 
-var removeDuplicates = function(nums) {
+var removeDuplicates = function (nums) {
     for (let i = 0; i < nums.length; i++) {
-        if (nums[i] === nums[i+1]) {
-            nums.splice(i+1,1)
+        if (nums[i] === nums[i + 1]) {
+            nums.splice(i + 1, 1)
             i--
         }
     }
@@ -253,7 +253,7 @@ var removeDuplicates = function(nums) {
 function removeDuplicates(nums) {
     let k = 1
     for (let i = 1; i < nums.length; i++) {
-        if (nums[i] !== nums[i-1]) {
+        if (nums[i] !== nums[i - 1]) {
             nums[k] = nums[i]
             k++
         }
@@ -284,12 +284,12 @@ function removeElement(nums, val) {
 // Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, 
 // or -1 if needle is not part of haystack.
 
- 
-var strStr = function(haystack, needle) {
-    if(needle.length > haystack.length) {
+
+var strStr = function (haystack, needle) {
+    if (needle.length > haystack.length) {
         return -1;
-    } 
-    if(haystack === needle) return 0
+    }
+    if (haystack === needle) return 0
 
     for (let i = 0; i <= haystack.length - needle.length; i++) {
         if (haystack.substring(i, i + needle.length) === needle) {
@@ -302,7 +302,7 @@ var strStr = function(haystack, needle) {
 
 // or
 
-var strStr = function(haystack, needle) {
+var strStr = function (haystack, needle) {
     if (needle.length > haystack.length) {
         return -1;
     }
@@ -330,9 +330,9 @@ var strStr = function(haystack, needle) {
 
 // You must write an algorithm with O(log n) runtime complexity.
 
- 
+
 // o(n)
-var searchInsert = function(nums, target) {
+var searchInsert = function (nums, target) {
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] === target) {
             return i
@@ -348,7 +348,7 @@ var searchInsert = function(nums, target) {
 
 // o(log n)
 
-var searchInsert = function(nums, target) {
+var searchInsert = function (nums, target) {
     let left = 0;
     let right = nums.length - 1;
 
@@ -382,7 +382,7 @@ function ListNode(val, next) {
     this.next = (next === undefined ? null : next);
 }
 
-var addTwoNumbers = function(l1, l2) {
+var addTwoNumbers = function (l1, l2) {
     let dummy = new ListNode(0);
     let current = dummy;
     let carry = 0;
@@ -441,18 +441,18 @@ var lengthOfLongestSubstring = function (s) {
 
 // or
 
-var lengthOfLongestSubstring = function(s) {
+var lengthOfLongestSubstring = function (s) {
     let set = new Set();
     let left = 0;
     let ans = 0;
     for (let right = 0; right < s.length; right++) {
-       while (set.has(s[right])) {
-           set.delete(s[left])
-           left += 1;
-           console.log("left", left)
-       }
+        while (set.has(s[right])) {
+            set.delete(s[left])
+            left += 1;
+            console.log("left", left)
+        }
         set.add(s[right]);
-        console.log("right",right)
+        console.log("right", right)
         ans = Math.max(ans, right - left + 1)
     }
     console.log(set)
@@ -463,5 +463,74 @@ var lengthOfLongestSubstring = function(s) {
 const s = "abcabcbb";
 console.log(lengthOfLongestSubstring(s));
 
+// Given a string s, return the longest palindromic substring in s.function isPalindrome(str) {
+function isPalindrome(str) {
+    const len = str.length;
+    for (let i = 0; i < Math.floor(len / 2); i++) {
+        if (str[i] !== str[len - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+var longestPalindrome = function (s) {
+    let ans = ""
+    if (s.length <= 1) {
+        return s
+    }
+    if (isPalindrome(s)) {
+        return s
+    }
+    for (let i = 0; i < s.length; i++) {
+        for (let j = i + 1; j <= s.length; j++) {
+            let sub = s.substring(i, j)
+            let isPandi = isPalindrome(sub)
+            if (sub.length > ans.length && isPandi) {
+                ans = sub
+            }
+        }
+    }
+    return ans
+};
+
+// or
+
+
+var longestPalindrome = function(s) {
+    if (s === [...s].reverse().join('')) {
+        return s;
+    }
+
+    if (s.length <= 1) {
+        return s
+    }
+    
+    let max = "";
+
+    for (let i = 0; i < s.length; i++) {
+        let max1 = match(i, i);
+        let max2 = match(i, i+1)
+        if (max1.length > max.length) {
+            max = max1
+        }
+        if (max2.length > max.length) {
+            max = max2
+        }
+    }
+
+    return max;
+
+    function match(left, right) {
+     while (left >= 0 && right < s.length && s[left] === s[right]) {
+         left--;
+         right++;
+     }
+     return s.slice(left+1, right)
+ }
+  
+};
+
+console.log(longestPalindrome("babad"))
 
 
