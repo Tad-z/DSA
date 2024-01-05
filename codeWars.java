@@ -1,3 +1,4 @@
+// convert an integer to binary and count how many 1's are in it's binary eqivalent
 public class BitCounting {
 
 	public static int countBits(int n){
