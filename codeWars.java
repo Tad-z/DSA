@@ -41,3 +41,23 @@ public class Xbonacci {
 
     }
   }
+
+  // Complete the function that accepts a string parameter, 
+  // and reverses each word in the string. All spaces in the string should be retained.
+
+public class Kata
+{
+  public static String reverseWords(final String original)
+  {
+    String[] words = original.split(" ");
+    //string builder is a mutable string of characters     
+    StringBuilder reversedString = new StringBuilder();
+    
+    for (String word: words) {
+      StringBuilder reversedWord = new StringBuilder(word).reverse();
+      reversedString.append(reversedWord).append(" ");
+    }
+    
+    return reversedString.toString().trim();
+  }
+}
