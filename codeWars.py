@@ -88,3 +88,8 @@ def reverse_words(text):
 
     new_sentence = ' '.join(reverse_array)
     return new_sentence
+
+# or
+
+def reverse_words(str):
+    return ' '.join(s[::-1] for s in str.split(' '))
