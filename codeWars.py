@@ -75,3 +75,16 @@ def open_or_senior(data):
 
 def openOrSenior(data):
   return ["Senior" if age >= 55 and handicap >= 8 else "Open" for (age, handicap) in data]
+
+
+# Complete the function that accepts a string parameter, 
+# and reverses each word in the string. All spaces in the string should be retained.
+def reverse_words(text):
+    array = text.split(' ')
+    reverse_array = []
+    for element in array:
+        reverse = element[::-1]
+        reverse_array.append(reverse)
+
+    new_sentence = ' '.join(reverse_array)
+    return new_sentence
