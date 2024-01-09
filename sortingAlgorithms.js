@@ -36,7 +36,7 @@ function selectionSort(array) {
         }
         let temp = smallest
         console.log("1", array);
-        array[position] = array[i]
+        array[position] = array[i];
         console.log("2", array);
         array[i] = temp
         console.log("3", array);
