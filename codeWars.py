@@ -102,3 +102,14 @@ def to_camel_case(text):
     # Capitalize the first word if it was originally capitalized
     camel_case = words[0] + ''.join(word.capitalize() for word in words[1:])
     return camel_case
+
+# Complete the solution so that the function will break up camel casing, using a space between words.
+def solution(s):
+    res = ""
+    for i in range(len(s) - 1):
+        res += s[i]
+        if s[i + 1].isupper():
+            res += " "
+
+    res += s[-1]
+    return res
