@@ -497,7 +497,7 @@ var longestPalindrome = function (s) {
 // or
 
 
-var longestPalindrome = function(s) {
+var longestPalindrome = function (s) {
     if (s === [...s].reverse().join('')) {
         return s;
     }
@@ -505,12 +505,12 @@ var longestPalindrome = function(s) {
     if (s.length <= 1) {
         return s
     }
-    
+
     let max = "";
 
     for (let i = 0; i < s.length; i++) {
         let max1 = match(i, i);
-        let max2 = match(i, i+1)
+        let max2 = match(i, i + 1)
         if (max1.length > max.length) {
             max = max1
         }
@@ -522,13 +522,13 @@ var longestPalindrome = function(s) {
     return max;
 
     function match(left, right) {
-     while (left >= 0 && right < s.length && s[left] === s[right]) {
-         left--;
-         right++;
-     }
-     return s.slice(left+1, right)
- }
-  
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
+            left--;
+            right++;
+        }
+        return s.slice(left + 1, right)
+    }
+
 };
 
 console.log(longestPalindrome("babad"))
@@ -538,7 +538,7 @@ console.log(longestPalindrome("babad"))
 // If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
 
 // Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
-var reverse = function(x) {
+var reverse = function (x) {
     const INT_MAX = Math.pow(2, 31) - 1;
     let res = 0;
     let flag = x < 0 ? -1 : 1;
@@ -558,7 +558,7 @@ var reverse = function(x) {
     }
 
     return flag * res;
-    
+
 };
 
 var intToRoman = function (num) {
@@ -646,8 +646,8 @@ var threeSum = function (nums) {
 
 // You may assume that each input would have exactly one solution.
 
- 
-var threeSumClosest = function(nums, target) {
+
+var threeSumClosest = function (nums, target) {
     let closest = Infinity;
 
     nums.sort((a, b) => a - b);
@@ -680,11 +680,11 @@ var threeSumClosest = function(nums, target) {
     return closest
 };
 
-var letterCombinations = function(digits) {
+var letterCombinations = function (digits) {
     if (!digits) {
         return [];
     }
-    
+
     const map = {
         "2": "abc",
         "3": "def",
@@ -715,6 +715,29 @@ var letterCombinations = function(digits) {
     backtrack(0, [])
     return combinations
 };
+
+var isValidBST = function (root) {
+    if (!root) {
+        return true
+    }
+    return traverse(root, -Infinity, Infinity)
+}
+
+function traverse(node, min, max) {
+    if (!node) {
+        return true
+    }
+
+    if (node.val <= min || node.val >= max) {
+        return false
+    }
+
+    return (
+        traverse(node.left, min, node.val) &&
+        traverse(node.right, node.val, max)
+    )
+
+}
 
 
 
