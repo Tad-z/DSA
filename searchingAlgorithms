@@ -1,35 +1,88 @@
-function BreadthFirstSearch(){
-    let currentNode = this.root;
-    let list = [];
-    let queue = [];
-    queue.push(currentNode);
+function BreadthFirstSearch() {
+  let currentNode = this.root;
+  let list = [];
+  let queue = [];
+  queue.push(currentNode);
 
-    while(queue.length > 0){
-      currentNode = queue.shift();
-      list.push(currentNode.value);
-      if(currentNode.left) {
-        queue.push(currentNode.left);
-      }
-      if(currentNode.right) {
-        queue.push(currentNode.right);
-      }
-    }
-    return list;
-  }
-
-function BreadthFirstSearchR(queue, list) {
-    if (!queue.length) {
-      return list;
-    }
-    const currentNode = queue.shift();
+  while (queue.length > 0) {
+    currentNode = queue.shift();
     list.push(currentNode.value);
-    
     if (currentNode.left) {
       queue.push(currentNode.left);
     }
     if (currentNode.right) {
       queue.push(currentNode.right);
     }
-    
-    return this.BreadthFirstSearchR(queue, list);
   }
+  return list;
+}
+
+function BreadthFirstSearchR(queue, list) {
+  if (!queue.length) {
+    return list;
+  }
+  const currentNode = queue.shift();
+  list.push(currentNode.value);
+
+  if (currentNode.left) {
+    queue.push(currentNode.left);
+  }
+  if (currentNode.right) {
+    queue.push(currentNode.right);
+  }
+
+  return this.BreadthFirstSearchR(queue, list);
+}
+
+function DFSInOrder() {
+  return traverseInOrder(this.root, []);
+}
+function DFSPreOrder() {
+  return traversePreOrder(this.root, []);
+}
+function DFSPostOrder() {
+  return traversePostOrder(this.root, []);
+}
+
+//     9
+//  4     20
+//1  6  15  170
+
+function traverseInOrder(node, list) {
+  console.log(list, node.value)
+  if (node.left) {
+    traverseInOrder(node.left, list)
+  }
+  list.push(node.value)
+  if (node.right) {
+    traverseInOrder(node.right, list)
+  }
+  return list
+}
+
+function traversePreOrder(node, list) {
+  console.log(list, node.value)
+  list.push(node.value)
+  if (node.left) {
+    traversePreOrder(node.left, list)
+  }
+
+  if (node.right) {
+    traversePreOrder(node.right, list)
+  }
+  return list
+}
+
+function traversePostOrder(node, list) {
+  console.log(list, node.value)
+
+  if (node.left) {
+    traversePostOrder(node.left, list)
+  }
+
+  if (node.right) {
+    traversePostOrder(node.right, list)
+  }
+  list.push(node.value)
+  return list
+}
