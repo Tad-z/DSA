@@ -59,7 +59,7 @@ function fibonacciIterative(n) {
 console.log(fibonacciIterative(10))
 console.log(calculations)
 
-// o(n) solution
+// o(n) recursive solution via dynamic programming
 let calculations = 0
 function fibonacciMaster() {
     let cache = {};
