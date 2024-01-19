@@ -40,6 +40,7 @@ function findFactorialIterative(number) {
     return answer
 }
 
+// 0(2^n) solution
 function fibonacciRecursive(n) {
     if (n < 2) {
         return n;
@@ -55,9 +56,15 @@ function fibonacciIterative(n) {
     return arr[n];
 }
 
+console.log(fibonacciIterative(10))
+console.log(calculations)
+
+// o(n) solution
+let calculations = 0
 function fibonacciMaster() {
     let cache = {};
-    return function(n) {
+    return function fib(n) {
+        calculations++
         if (n in cache) {
             return cache[n]
         } else {
@@ -70,6 +77,9 @@ function fibonacciMaster() {
         }
     }
 }
+const fasteFib = fibonacciMaster()
+console.log(fasteFib(7))
+console.log(calculations)
 
 //Implement a function that reverses a string using iteration...and then recursion!
 function reverseIterativeString(str) {
