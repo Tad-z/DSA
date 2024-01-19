@@ -55,6 +55,22 @@ function fibonacciIterative(n) {
     return arr[n];
 }
 
+function fibonacciMaster() {
+    let cache = {};
+    return function(n) {
+        if (n in cache) {
+            return cache[n]
+        } else {
+            if(n < 2) {
+                return n
+            } else {
+                cache[n] = fib(n-1) + fib(n-2)
+                return cache[n]
+            }
+        }
+    }
+}
+
 //Implement a function that reverses a string using iteration...and then recursion!
 function reverseIterativeString(str) {
     if(!str.length) {
