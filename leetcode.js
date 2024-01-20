@@ -739,5 +739,50 @@ function traverse(node, min, max) {
 
 }
 
+// You are a professional robber planning to rob houses along a street. 
+
+// Each house has a certain amount of money stashed, 
+
+// the only constraint stopping you from robbing each of them is that 
+
+// adjacent houses have security systems connected and it will automatically contact the police 
+
+// if two adjacent houses were broken into on the same night.
+
+// Given an integer array nums representing the amount of money of each house,
+
+// return the maximum amount of money you can rob tonight without alerting the police.
+
+
+// Example 1:
+
+// Input: nums = [1,2,3,1]
+// Output: 4
+// Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+// Total amount you can rob = 1 + 3 = 4.
+var rob = function(nums) {
+    let prev1 = 0;
+    let prev2 = 0;
+    for (let num of nums) {
+        let temp = prev1
+        prev1 = Math.max(prev2 + num, prev1)
+        prev2 = temp
+    }
+    return prev1
+};
+
+var rob = function(nums) {
+    const n = nums.length;
+    if(n==1) return nums[0];
+  
+    let memo = new Array(n+1);
+    memo[0] = 0;
+    memo[1] = nums[0];
+    for (let i = 2; i < nums.length; i++) {
+        let val = nums[i];
+        memo[i+1] = Math.max(memo[i], memo[i-1] + val)
+    }
+   return memo[nums.length]; 
+};
 
 
