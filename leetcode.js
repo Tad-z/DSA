@@ -785,4 +785,16 @@ var rob = function(nums) {
    return memo[nums.length]; 
 };
 
+var rob = function(nums) {
+    if (nums.length === 1) return nums[0]
+    const dp = [nums[0]];
+    dp[1] = nums[1]
+    for (let i = 2; i < nums.length; i++) {
+        let max = Math.max(dp[i - 2], dp[i - 3] || 0)
+        console.log(nums[i], max)
+        dp[i] = nums[i] + max;
+    }
+    return Math.max(dp[nums.length - 1], dp[nums.length - 2]);
+};
+
 
