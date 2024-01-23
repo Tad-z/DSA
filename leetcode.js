@@ -797,4 +797,20 @@ var rob = function(nums) {
     return Math.max(dp[nums.length - 1], dp[nums.length - 2]);
 };
 
+// You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
+// You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+// Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+var maxProfit = function (prices) {
+    let maxProfit = 0;
+    let cheapest = prices[0];
+    for (let i = 1; i < prices.length; i++) {
+        if (cheapest > prices[i]) {
+            cheapest = prices[i]
+        } else {
+            maxProfit = Math.max(prices[i] - cheapest, maxProfit)
+        }    
+    }
+    return maxProfit
+};
