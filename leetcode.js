@@ -840,25 +840,6 @@ var climbStairs = function (n) {
     return steps[n]
 };
 
-function climbStairs2() {
-    let cache = {}
-    function memo(n) {
-        if (n in cache) {
-            return cache[n]
-        } else {
-            if (n == 1) {
-                return 1
-            }
-
-            if (n == 2) {
-                return 2
-            }
-
-            cache[n] = memo(n - 1) + memo(n - 2)
-            return cache[n]
-        }
-    }
-}
 // or 
 function climbStairs(n) {
     return memo(n, {})
