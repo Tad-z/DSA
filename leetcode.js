@@ -815,3 +815,47 @@ var maxProfit = function (prices) {
     }
     return maxProfit
 };
+
+// You are climbing a staircase. It takes n steps to reach the top.
+
+// Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+var climbStairs = function(n) {
+    if (n == 1) {
+        return 1
+    }
+
+    if (n == 2) {
+        return 2
+    }
+
+    const steps = new Array(n + 1).fill(0)
+
+    steps[1] = 1;
+    steps[2] = 2;
+
+    for (let i = 3; i <= n; i++) {
+        steps[i] = steps[i-1] + steps[i-2]
+    }
+    return steps[n]
+};
+
+function climbStairs2 () {
+    let cache = {}
+    function memo(n) {
+        if (n in cache) {
+            return cache[n]
+        }  else {
+            if (n == 1) {
+                return 1
+            }
+        
+            if (n == 2) {
+                return 2
+            }
+
+            cache[n] = memo(n-1) + memo(n-2)
+            return cache[n]
+        }  
+    }
+}
