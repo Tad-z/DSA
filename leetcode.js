@@ -760,7 +760,7 @@ function traverse(node, min, max) {
 // Output: 4
 // Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
 // Total amount you can rob = 1 + 3 = 4.
-var rob = function(nums) {
+var rob = function (nums) {
     let prev1 = 0;
     let prev2 = 0;
     for (let num of nums) {
@@ -771,21 +771,21 @@ var rob = function(nums) {
     return prev1
 };
 
-var rob = function(nums) {
+var rob = function (nums) {
     const n = nums.length;
-    if(n==1) return nums[0];
-  
-    let memo = new Array(n+1);
+    if (n == 1) return nums[0];
+
+    let memo = new Array(n + 1);
     memo[0] = 0;
     memo[1] = nums[0];
     for (let i = 2; i < nums.length; i++) {
         let val = nums[i];
-        memo[i+1] = Math.max(memo[i], memo[i-1] + val)
+        memo[i + 1] = Math.max(memo[i], memo[i - 1] + val)
     }
-   return memo[nums.length]; 
+    return memo[nums.length];
 };
 
-var rob = function(nums) {
+var rob = function (nums) {
     if (nums.length === 1) return nums[0]
     const dp = [nums[0]];
     dp[1] = nums[1]
@@ -811,7 +811,7 @@ var maxProfit = function (prices) {
             cheapest = prices[i]
         } else {
             maxProfit = Math.max(prices[i] - cheapest, maxProfit)
-        }    
+        }
     }
     return maxProfit
 };
@@ -820,7 +820,7 @@ var maxProfit = function (prices) {
 
 // Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 
-var climbStairs = function(n) {
+var climbStairs = function (n) {
     if (n == 1) {
         return 1
     }
@@ -835,27 +835,49 @@ var climbStairs = function(n) {
     steps[2] = 2;
 
     for (let i = 3; i <= n; i++) {
-        steps[i] = steps[i-1] + steps[i-2]
+        steps[i] = steps[i - 1] + steps[i - 2]
     }
     return steps[n]
 };
 
-function climbStairs2 () {
+function climbStairs2() {
     let cache = {}
     function memo(n) {
         if (n in cache) {
             return cache[n]
-        }  else {
+        } else {
             if (n == 1) {
                 return 1
             }
-        
+
             if (n == 2) {
                 return 2
             }
 
-            cache[n] = memo(n-1) + memo(n-2)
+            cache[n] = memo(n - 1) + memo(n - 2)
             return cache[n]
-        }  
+        }
+    }
+}
+// or 
+function climbStairs(n) {
+    return memo(n, {})
+
+}
+
+function memo(n, cache) {
+    if (n in cache) {
+        return cache[n]
+    } else {
+        if (n == 1) {
+            return 1
+        }
+
+        if (n == 2) {
+            return 2
+        }
+
+        cache[n] = memo(n - 1, cache) + memo(n - 2, cache)
+        return cache[n]
     }
 }
