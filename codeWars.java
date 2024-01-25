@@ -91,3 +91,22 @@ class Solution {
         }
     }
 }
+
+public class StringSplit {
+  public static String[] solution(String s) {
+      int n = s.length();
+      int resultLength = (n % 2 == 0) ? n/2 : n/2 + 1;
+      String[] result = new String[resultLength];
+      for (int i = 1, j = 0; i <= n; i += 2, j++) {
+        if(i == n) {
+          result[j] = s.substring(i-1) + "_";
+        } else {
+            String str = s.substring(i-1, i+1);
+            result[j] = str;
+        }
+
+      }
+    System.out.print(result);
+    return result;
+  }
+}
