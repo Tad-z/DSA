@@ -47,7 +47,7 @@ function fibonacciRecursive(n) {
     }
     return fibonacciRecursive(n-1) + fibonacciRecursive(n-2);
 }
-
+// bottom up approach
 function fibonacciIterative(n) {
     const arr = [0,1];
     for (let i = 2; i <= n; i++) {
