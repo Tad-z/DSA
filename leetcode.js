@@ -645,8 +645,6 @@ var threeSum = function (nums) {
 // Return the sum of the three integers.
 
 // You may assume that each input would have exactly one solution.
-
-
 var threeSumClosest = function (nums, target) {
     let closest = Infinity;
 
