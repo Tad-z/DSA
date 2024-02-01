@@ -99,7 +99,7 @@ function reverseIterativeString(str) {
     return arr.join("")
 }
 
-reverseIterativeString('yoyo mastery')
+// reverseIterativeString('yoyo mastery')
 
 function reverseStringRecursive (str) {
     if (str === "") {
