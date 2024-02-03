@@ -861,3 +861,24 @@ function memo(n, cache) {
         return cache[n]
     }
 }
+
+
+var reverseString = function(s) {
+    let length = s.length;
+    let start = 0;
+    let end = length-1;
+
+    while (start <= end) {
+        let temp = s[end];
+        s[end] = s[start];
+        s[start] = temp;
+
+        start++
+        end--
+    }
+};
+
+var reverseString = function(s) {
+    return s.reverse()
+};
+
