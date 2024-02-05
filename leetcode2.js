@@ -2,17 +2,17 @@
 
 // You must implement a solution with a linear runtime complexity and use only constant extra space.
 
-var singleNumber = function (nums) {
-    let map = {};
-    map[nums[0]] = 0
-    for (let i = 1; i < nums.length; i++) {   
-        let item = nums[i];
-        if(item in map) {
-            delete map[nums[i]];
-        } else {
-            map[nums[i]] = i;
-        }
-        console.log('map2', map)
+// To find the single number in the array with linear runtime complexity and constant extra space, 
+
+// you can use the bitwise XOR operation. The XOR of two identical numbers is 0, and XOR of any number with 0 is the number itself.
+
+var singleNumber = function(nums) {
+    let result = 0;
+
+    for (let num of nums) {
+        result ^= num;
     }
-    return Object.keys(map);
+
+    return result;
 };
+
