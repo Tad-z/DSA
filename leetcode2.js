@@ -16,3 +16,20 @@ var singleNumber = function(nums) {
     return result;
 };
 
+
+// Given the root of a binary tree, return its maximum depth.
+
+// A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+var maxDepth = function(root) {
+    if (root === null) {
+        return 0;
+    }
+
+    let lcount = 1 + maxDepth(root.left);
+    let rcount = 1 + maxDepth(root.right);
+
+    let result = Math.max(lcount, rcount);
+    return result;
+};
+
