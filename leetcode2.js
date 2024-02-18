@@ -138,3 +138,14 @@ var titleToNumber = function(s) {
     return result
 };
 
+// or
+
+var titleToNumber = function (columnTitle) {
+    let result = 0;
+    for (let i = 0; i < columnTitle.length; i++) {
+        let charValue = columnTitle.charCodeAt(i) - 64;
+        console.log(charValue)
+        result = result * 26 + charValue;
+    }
+    return result;
+};
