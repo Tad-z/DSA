@@ -149,3 +149,21 @@ var titleToNumber = function (columnTitle) {
     }
     return result;
 };
+
+var majorityElement = function(nums) {
+    let tracker = 0;
+    let currElement = -1;
+    for (let i = 0; i < nums.length; i++) {
+        if (tracker == 0) {
+            currElement = nums[i];
+            tracker++;
+        } else {
+            if (nums[i] == currElement) {
+                tracker++;
+            } else {
+                tracker--;
+            }
+        }
+    }
+    return currElement;
+};
