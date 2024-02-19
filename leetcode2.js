@@ -156,20 +156,20 @@ var titleToNumber = function (columnTitle) {
 // The majority element is the element that appears more than ⌊n / 2⌋ times. 
 
 // You may assume that the majority element always exists in the array.
-var majorityElement = function(nums) {
-    let tracker = 0;
-    let currElement = -1;
-    for (let i = 0; i < nums.length; i++) {
-        if (tracker == 0) {
-            currElement = nums[i];
-            tracker++;
+var majorityElement = function (nums) {
+    let count = 1;
+    let currElement = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] == currElement) {
+            count++;
         } else {
-            if (nums[i] == currElement) {
-                tracker++;
-            } else {
-                tracker--;
-            }
+            count--;
+        }
+        if (count < 0) {
+            currElement = nums[i];
+            count = 1;
         }
     }
+
     return currElement;
 };
