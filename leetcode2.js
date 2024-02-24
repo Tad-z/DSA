@@ -212,3 +212,26 @@ var maxProfit = function(prices) {
     }
     return maxProfit;
 };
+
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) {
+       return false;
+   }
+   let cache = {};
+   for (const char of s) {
+       cache[char] = (cache[char] || 0) + 1;
+   }
+
+   for (const c of t) {
+       if (c in cache) {
+           cache[c] = cache[c] - 1
+       }
+   }
+
+   for (const count of Object.values(cache)) {
+       if (count !== 0) {
+           return false
+       }
+   }
+   return true
+};
