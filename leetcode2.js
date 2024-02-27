@@ -238,3 +238,16 @@ var isAnagram = function(s, t) {
    }
    return true
 };
+
+var containsDuplicate = function (nums) {
+    let set = {}
+    for (let i = 0; i < nums.length; i++) {
+        set[2]
+        if (set[nums[i]] !== undefined) {
+            return true
+        }
+        set[nums[i]] = i
+    }
+    return false
+};
+
