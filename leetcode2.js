@@ -253,3 +253,25 @@ var containsDuplicate = function (nums) {
     return false
 };
 
+
+var firstUniqChar = function (s) {
+    let map = {};
+    for (let i = 0; i < s.length; i++) {
+        if (map[s[i]] === undefined) {
+            map[s[i]] = i;
+        } else {
+            map[s[i]] = -1;
+        }
+    }
+    console.log(map)
+    let answer = -1
+    for (let key in map) {
+        if (map[key] !== -1) {
+            if (answer === -1 || map[key] < answer) {
+                answer = map[key];
+            }
+        }
+    }
+    return answer;
+};
+
