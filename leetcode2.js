@@ -275,3 +275,19 @@ var firstUniqChar = function (s) {
     return answer;
 };
 
+
+var sortedArrayToBST = function(nums) {
+    if (nums.length === 1) return new TreeNode(nums[0]);
+    if (nums.length === 0) return null;
+
+    let center = Math.floor(nums.length / 2);
+    let root = new TreeNode(nums[center]);
+
+    let leftSubTree = nums.slice(0, center);
+    root.left = sortedArrayToBST(leftSubTree);
+
+    let rightSubTree = nums.slice(center + 1, nums.length)
+    root.right = sortedArrayToBST(rightSubTree);
+
+    return root;
+};
