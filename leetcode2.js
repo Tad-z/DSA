@@ -331,3 +331,22 @@ var intersect = function(nums1, nums2) {
 
     return intersection;
 };
+
+// or
+
+var intersect = function(nums1, nums2) {
+    let intersection = [];
+    let numCount = {};
+    for (let num of nums1) {
+        numCount[num] = (numCount[num] || 0) + 1
+    }
+
+    for (let num of nums2) {
+        if (numCount[num] > 0) {
+            intersection.push(num);
+            numCount[num]--;
+        }
+    }
+
+    return intersection;
+};
