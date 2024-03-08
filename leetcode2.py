@@ -1,7 +1,6 @@
 def isHappy(n):
     cycle = set()
     a = n
-
     while a not in cycle:
         if a == n:
             pass
@@ -15,5 +14,4 @@ def isHappy(n):
         if sum is 1:
             return True
         a = sum
-
     return False
