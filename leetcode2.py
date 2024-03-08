@@ -1,18 +1,19 @@
 def isHappy(n):
-    def getNext(num):
-        nextNum = 0
-        while num > 0:
-            digit = num % 10
-            nextNum += digit**2
-            num //= 10
+    cycle = set()
+    a = n
 
-        return nextNum
+    while a not in cycle:
+        if a == n:
+            pass
+        else:
+            cycle.add(a)
+        sum = 0
+        while a > 0:
+            sum += (a % 10) ** 2
+            a = a // 10
 
-    seen = set()
-    while n != 1 and n not in seen:
-        seen.add(n)
-        n = getNext(n)
-        print(seen)
-        print(n)
+        if sum is 1:
+            return True
+        a = sum
 
-    return n == 1
+    return False
